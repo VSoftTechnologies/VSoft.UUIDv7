@@ -7,7 +7,7 @@ program GuidV7Demo;
 uses
   System.SysUtils,
   Spring.Benchmark,
-  VSoft.GUIDv7 in '..\Source\VSoft.GUIDv7.pas';
+  VSoft.UUIDv7 in '..\Source\VSoft.UUIDv7.pas';
 
 
 procedure BM_CreateV4(const state: TState);
@@ -27,7 +27,7 @@ begin
   for var _ in state do
   begin
     // This code gets timed
-    var guid :=TGuidV7Helper.CreateV7;
+    var guid :=TUUIDv7Helper.CreateV7;
   end;
 end;
 

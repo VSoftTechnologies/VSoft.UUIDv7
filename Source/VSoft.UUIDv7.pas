@@ -3,7 +3,7 @@ unit VSoft.UUIDv7;
 interface
 
 type
-  TGuidV7Helper = record
+  TUUIDV7Helper = record
     class function CreateV7 : TGuid;static;
   end;
 
@@ -47,9 +47,9 @@ end;
   const VersionMask : word = $F000;
   const Version7Value : word =  $7000;
 
-{ TGuidV7Helper }
+{ TUUIDV7Helper }
 
-class function TGuidV7Helper.CreateV7: TGuid;
+class function TUUIDV7Helper.CreateV7: TGuid;
 var
   timestamp : UInt64;
 begin

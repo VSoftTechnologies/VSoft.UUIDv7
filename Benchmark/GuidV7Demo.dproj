@@ -190,7 +190,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\Source\VSoft.GUIDv7.pas"/>
+        <DCCReference Include="..\Source\VSoft.UUIDv7.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
