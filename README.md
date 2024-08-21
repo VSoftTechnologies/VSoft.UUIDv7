@@ -21,7 +21,7 @@ Clone the repository and add  VSoft.UUIDv7.pas file to your project, or add the 
 var
   guid : TGuid;
 begin
-  guid := TGuidV7Helper.CreateV7;
+  guid := TUUIDv7Helper.CreateV7;
   writeln(guid.ToString);
 end;
 ```
