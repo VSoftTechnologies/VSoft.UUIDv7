@@ -1,0 +1,101 @@
+{
+ "metadata": {
+  "id": "VSoft.UUIDv7",
+  "version": "1.0.0",
+  "description": "A Delphi implementation of UUID v7 Generator.\r\n",
+  "authors": "Vincent Parrett",
+  "projectUrl": "https://github.com/VSoftTechnologies/VSoft.UUIDv7",
+  "repositoryUrl": "https://github.com/VSoftTechnologies/VSoft.UUIDv7",
+  "license": "Apache-2.0",
+  "copyright": "Vincent Parrett",
+  "tags": "UUIDv7 UUID Guid"
+ },
+ "targetPlatforms": [
+  {
+   "compiler": "XE2",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE3",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE4",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE5",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE7",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE6",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "XE8",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "10.1",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "10.2",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "10.4",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "10.3",
+   "platforms": "Win32, Win64",
+   "template": "default"
+  },
+  {
+   "compiler": "11.0",
+   "platforms": "Win32, Win64, OSX64, OSXARM64, Android, Android64, iOS64, LinuxIntel64",
+   "template": "default"
+  },
+  {
+   "compiler": "12.0",
+   "platforms": "Win32, Win64, OSX64, OSXARM64, Android, Android64, iOS64, LinuxIntel64",
+   "template": "default"
+  },
+  {
+   "compiler": "10.0",
+   "platforms": "Win32, Win64",
+   "template": "--unset--"
+  }
+ ],
+ "templates": [
+  {
+   "name": "default",
+   "source": [
+    {
+     "src": "Source\\*.pas",
+     "dest": "Source"
+    }
+   ],
+   "searchPaths": [
+    {
+     "path": "Source"
+    }
+   ]
+  }
+ ]
+}
