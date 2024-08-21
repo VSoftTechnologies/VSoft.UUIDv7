@@ -1,7 +1,7 @@
 {
  "metadata": {
   "id": "VSoft.UUIDv7",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Delphi implementation of UUID v7 Generator.\r\n",
   "authors": "Vincent Parrett",
   "projectUrl": "https://github.com/VSoftTechnologies/VSoft.UUIDv7",

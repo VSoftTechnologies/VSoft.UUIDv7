@@ -4,7 +4,8 @@ interface
 
 type
   TUUIDV7Helper = record
-    class function CreateV7 : TGuid;static;
+    class function CreateV7 : TGuid;overload;static;
+    class function CreateV7(const dt : TDateTime) : TGuid;overload;static;
   end;
 
 implementation
@@ -12,14 +13,14 @@ implementation
 uses
   {$IFDEF MSWINDOWS}
   WinApi.Windows,
-  {$ELSE}
-  System.DateUtils
   {$ENDIF}
+  System.DateUtils,
   System.SysUtils;
 
 
 
 {$IFDEF MSWINDOWS}
+//This is substantially faster.
 function UNIXTimeInMilliseconds: UInt64;inline;
 const
   TimeOffset = 116444736000000000;
@@ -34,12 +35,18 @@ end;
 // NowUtc only available in 11.3 or later.
 // this is slow.
 function UNIXTimeInMilliseconds: UInt64;inline;
+var
   DT: TDateTime;
 begin
   DT := TDateTime.NowUTC;
   Result := MilliSecondsBetween(DT, UnixDateDelta);
 end;
 {$ENDIF}
+
+function DateTimeToUNIXTimeInMilliseconds(const dt : TDateTime): UInt64;inline;
+begin
+  Result := MilliSecondsBetween(dt, UnixDateDelta);
+end;
 
   const Variant10xxMask : byte = $C0;
   const Variant10xxValue : byte = $80;
@@ -55,6 +62,18 @@ var
 begin
   result := TGUID.NewGuid;
   timestamp := UNIXTimeInMilliseconds;
+  result.D1 := Cardinal(timestamp shr 16);
+  result.D2 := Word(timestamp);
+  result.D3 := (result.D3 and (not VersionMask)) or Version7Value;
+  result.D4[0] := (result.D4[0] and (not Variant10xxMask)) or Variant10xxValue ;
+end;
+
+class function TUUIDV7Helper.CreateV7(const dt: TDateTime): TGuid;
+var
+  timestamp : UInt64;
+begin
+  result := TGUID.NewGuid;
+  timestamp := DateTimeToUNIXTimeInMilliseconds(dt);
   result.D1 := Cardinal(timestamp shr 16);
   result.D2 := Word(timestamp);
   result.D3 := (result.D3 and (not VersionMask)) or Version7Value;

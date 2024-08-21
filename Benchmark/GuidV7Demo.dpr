@@ -31,9 +31,22 @@ begin
   end;
 end;
 
+procedure BM_CreateV7_DT(const state: TState);
+begin
+  var dt := Now;
+  // Perform setup here
+  for var _ in state do
+  begin
+    // This code gets timed
+    var guid :=TUUIDv7Helper.CreateV7(dt);
+  end;
+end;
+
+
 begin
   Benchmark(BM_CreateV4, 'TGuid.NewGuid');
   Benchmark(BM_CreateV7, 'TGuidV7Helper.CreateV7');
+  Benchmark(BM_CreateV7_DT, 'TGuidV7Helper.CreateV7(datetime)');
   // Run the benchmark
   Benchmark_Main;
   readln;
