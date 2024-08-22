@@ -6,7 +6,11 @@ type
   TUUIDV7Helper = record
     class function CreateV7 : TGuid;overload;static;
     class function CreateV7(const dt : TDateTime) : TGuid;overload;static;
+    class function CreatedUTC(const guid : TGUID) : TDateTime;static;
+    class function IsV7(const guid : TGuid) : boolean;static;inline;
+    class function Version(const guid : TGuid) : integer;static;inline;
   end;
+
 
 implementation
 
@@ -68,6 +72,14 @@ begin
   result.D4[0] := (result.D4[0] and (not Variant10xxMask)) or Variant10xxValue ;
 end;
 
+class function TUUIDV7Helper.CreatedUTC(const guid: TGUID): TDateTime;
+var
+  timestamp : UInt64;
+begin
+  timestamp := (UInt64(guid.D1) shl 16) or UInt64(guid.D2) ;
+  result := (timestamp / MSecsPerDay ) + UnixDateDelta;
+end;
+
 class function TUUIDV7Helper.CreateV7(const dt: TDateTime): TGuid;
 var
   timestamp : UInt64;
@@ -78,6 +90,17 @@ begin
   result.D2 := Word(timestamp);
   result.D3 := (result.D3 and (not VersionMask)) or Version7Value;
   result.D4[0] := (result.D4[0] and (not Variant10xxMask)) or Variant10xxValue ;
+end;
+
+class function TUUIDV7Helper.IsV7(const guid: TGuid): boolean;
+begin
+ result := Version(guid) = 7;
+end;
+
+
+class function TUUIDV7Helper.Version(const guid: TGuid): integer;
+begin
+ result := integer(guid.D3 shr 12);
 end;
 
 end.
